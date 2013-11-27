@@ -1,0 +1,14 @@
+package com.aspose.ecplugin;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class AsposeJavaComponents {
+	public static Map<String,AsposeJavaComponent> list = new HashMap<String,AsposeJavaComponent>();
+	public AsposeJavaComponents()
+	{
+		//ASPOSE_WORDS
+	AsposeJavaComponent asposeWords = new 
+	}
+
+}

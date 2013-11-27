@@ -1,0 +1,131 @@
+/*
+ * Copyright (c) 2001-2013 Aspose Pty Ltd. All Rights Reserved.
+ */
+
+package com.aspose.ecplugin;
+
+public class ECPluginConstants {
+
+	/**
+	 * Constants
+	 */
+	public static final String NATURE_ID_JDT = "org.eclipse.jdt.core.javanature";
+	public static final String ORG_ECLIPSE_JDT_LAUNCHING_CONTAINER = "org.eclipse.jdt.launching.JRE_CONTAINER";
+	public static final String NATURE_ID = "com.aspose.ecplugin.projectNature";
+	public static final String ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER = "org.eclipse.jdt.core.javabuilder";
+	public static final String SRC_FOLDER = "src";
+	public static final String LIB_FOLDER = "lib";
+	public static final String BIN_FOLDER = "bin";
+	public static final String FIRST_PAGE_NAME = "Aspose Project Wizard";
+	public static final String FIRST_PAGE_TITLE = "Aspose New Project";
+	public static final String FIRST_PAGE_DESCRIPTION = "Create Aspose New Project";
+	public static final String WIZARD_NAME = "Aspose new project";
+	public static final String IS_COMPONENT_SELECTED ="Some component must be selected";
+	public static final String INTERNET_CONNECTION_REQUIRED ="Inetenet connectivity is required to download components";
+
+	//Aspose Java components
+	public static final String ASPOSE_CELLS = "Aspose.Cells";
+	public static final String ASPOSE_WORDS = "Aspose.Words";	
+	public static final String ASPOSE_PDF = "Aspose.Pdf";
+	public static final String ASPOSE_SLIDES = "Aspose.Slides";	
+	public static final String ASPOSE_PDF_KIT = "Aspose.Pdf.Kit";
+	public static final String ASPOSE_BARCODE = "Aspose.BarCode";	
+	public static final String ASPOSE_METAFILES = "Aspose.Metafiles";
+	public static final String ASPOSE_EMAIL = "Aspose.Email";	
+	public static final String ASPOSE_OCR = "Aspose.OCR";
+	public static final String ASPOSE_IMAGING = "Aspose.Imaging";
+
+	//advertise
+	public static final String ASPOSE_ALL_COMPONENTS_TEXT = "» Generate reports using mail merge"
+			+"\n» Excel Reporting - Build dynamic Excel reports on the fly"
+			+"\n» Create Excel dashboards, incorporating charts and pivot tables"
+			+"\n» High-fidelity Excel rendering and printing"
+			+"\n» Create new PDF documents using the product API"
+			+"\n» Transform an XML document into PDF format"
+			+"\n» Convert an Image file into PDF format"
+			+"\n» Create new slides or clone existing slides from templates"
+			+"\n» Add, remove, replace or extract text from PDF files"
+			+"\n» Add, remove, replace or extract images from PDF files"
+			+"\n» Convert a PDF file to an image"
+			+"\n» Generate barcode images and save to stream or image file"
+			+"\n» Recognize barcodes from stream or image file"
+			+"\n» Render Windows metafiles (WMF) to images"
+			+"\n» Convert Windows metafiles (WMF) to other graphics formats";
+
+	public static final String ASPOSE_CELLS_FEATURE_TEXT = "Aspose.Cells for Java is an Excel® " +
+														   "\nspreadsheet reporting component that" +
+														   "\n enables Java applications to create " +
+														   "\nand manage Excel® spreadsheets without" +
+														   "\n using Microsoft Excel®. Aspose.Cells " +
+														   "\nfor Java is an incredibly feature rich " +
+														   "\ncomponent that offers much more than " +
+														   "\njust basic data export functions.";
+	public static final String ASPOSE_WORDS_FEATURE_TEXT = "Aspose.Words for Java is an advanced " +
+													       "\nclass library for Java that enables " +
+													       "\nyou to perform a great range of document" +
+													       "\n processing tasks directly within your " +
+													       "\nJava applications." 
+													     + "\nAspose.Words for Java supports DOC, OOXML," +
+													     "\n RTF, HTML and OpenDocument formats. With" +
+													     "\n Aspose.Words you can generate, modify, and" +
+													     "\n convert documents without using Microsoft Word.";	
+	public static final String ASPOSE_PDF_FEATURE_TEXT = "Aspose.Pdf for Java is a PDF document " +
+														 "\ncreation component that enables your " +
+														 "\nJava applications to read, write and " +
+														 "\nmanipulate PDF documents without using " +
+														 "\nAdobe Acrobat.";
+	public static final String ASPOSE_SLIDES_FEATURE_TEXT = "Aspose.Slides for Java is a unique " +
+															"\nPowerPoint management component that" +
+															"\n enables Java applications to read, " +
+															"\nwrite and manipulate PowerPoint documents" +
+															"\n without using Microsoft PowerPoint."
+														   +"\nAspose.Slides for Java supports formats " +
+														    "\nincluding PPT, PPS, POT and PresentationML" +
+														    "\n (OOXML, PPTX). ";	
+	public static final String ASPOSE_PDF_KIT_FEATURE_TEXT = "Aspose.Pdf.Kit for Java is a PDF document " +
+															 "\nmanipulation component that enables Java " +
+															 "\ndevelopers to manage and manipulate existing" +
+															 "\n PDF files as well as manage form fields" +
+															 "\n embedded within PDF files."
+														   + "\nIf you need to create new PDF files, Aspose.Pdf" +
+														     "\n is the right tool. But developers often need " +
+														     "\nto edit pre-existing PDF documents and for this" +
+														     "\n task, Aspose.Pdf.Kit is the tool to use.";
+	public static final String ASPOSE_BARCODE_FEATURE_TEXT = "Aspose.BarCode for Java is a robust and reliable " +
+															 "\nbarcode generation and recognition component, " +
+															 "\nwritten in Java, it allows developers to quickly" +
+															 "\n and easily add barcode generation and recognition" +
+															 "\n functionality to their Java applications."
+															+"\nAspose.BarCode for Java supports the Java SE, " +
+															"\nJava EE and Java ME platforms.";	
+	public static final String ASPOSE_METAFILES_FEATURE_TEXT = "With Aspose.Metafiles for Java, your development" +
+															   "\n staff will be able to convert metafiles to " +
+															   "\nother popular graphic format."
+															 + "\nAspose.Metafiles for Java is your solution for " +
+															 "\neffectively managing metafiles. It allows your " +
+															 "\nJava applications to quickly and easily display " +
+															 "\nand play both WMF and EMF files. It also offers " +
+															 "\nsupport for metafile conversions.";
+	public static final String ASPOSE_EMAIL_FEATURE_TEXT   = "Aspose.Email for Java is a Java class library " +
+														     "\nthat enables Java applications to read and " +
+														     "\nwrite Outlook MSG files without Microsoft " +
+														     "\nOutlook. It provides classes to read and update" +
+														     "\n MSG files, add/remove attachments and recipients," +
+														     "\n update subject, body and other MSG file properties.";	
+	public static final String ASPOSE_OCR_FEATURE_TEXT     = "Aspose.OCR for Java is a character recognition " +
+															 "\ncomponent built to allow developers to add OCR" +
+															 "\n functionality in their Java applications. " +
+															 "\nAspose.OCR provides simple set of classes that" +
+															 "\n allow developers to recognize characters from " +
+															 "\nthe images.";
+	public static final String ASPOSE_IMAGING_FEATURE_TEXT = "Aspose.Imaging for Java is an imaging library"
+															+"\n that lets developers create, edit, draw or"
+															+"\n convert images in their Java applications "
+															+"\nwith ease and performance. It offers broad " 
+															+"\nspectrum of traditional image processing " 
+															+"\noperations as well as most demanded features " 
+															+"\nthat makes it most widely used imaging engine.";
+
+
+
+}

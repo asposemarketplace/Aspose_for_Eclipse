@@ -1,0 +1,198 @@
+package com.aspose.ecplugin.wizard;
+
+import java.io.IOException;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+
+import com.aspose.ecplugin.ECPluginConstants;
+
+public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreationPage {
+	public Button asposeWordsButton;
+	public Button asposeCellsButton;
+	public Button asposePdfButton;
+	public Button asposeSlidesButton;
+	public Button asposePdfKitButton;
+	public Button asposeBarcodeButton;
+	public Button asposeMetafilesButton;
+	public Button asposeEmailButton;
+	public Button asposeOCRButton;
+	public Button asposeImagingButton;
+
+	public Button checkUncheckAll;
+
+
+	public WizardNewProjectCreationPageCustom(String pageName) {
+		super(pageName);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void createControl(Composite parent) {
+		super.createControl(parent);
+		createECComponents(parent);
+
+	}
+
+	public boolean showMessage(String title, String message)
+	{
+		boolean result = true;
+		
+		MessageBox msgBox = new MessageBox(getShell(),SWT.ICON_WARNING | SWT.YES | SWT.NO | SWT.CANCEL);
+		msgBox.setMessage(message);
+		msgBox.setText(title);
+		msgBox.open();
+		return result;
+	}
+	
+	/**
+	 * 
+	 * @param parent
+	 */
+	private void createECComponents(Composite parent){
+
+
+		Composite composite = (Composite) getControl ();
+		//setTitle ("Will this works?");
+
+		Composite dataArea = new Composite (composite, SWT.NONE);
+
+		dataArea.setLayout (new GridLayout (5, false));
+		dataArea.setLayoutData (new GridData (GridData.HORIZONTAL_ALIGN_FILL));
+
+		Group parentStyleGroup;
+		parentStyleGroup = new Group(dataArea, SWT.NONE);
+		parentStyleGroup.setLayout(new GridLayout());
+		GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
+		parentStyleGroup.setLayoutData(gridData);
+
+		Group parentStyleGroupSel;
+		parentStyleGroupSel = new Group(dataArea, SWT.BOTTOM);
+		parentStyleGroupSel.setLayout(new GridLayout());
+		GridData gridDataSel = new GridData(GridData.HORIZONTAL_ALIGN_FILL,GridData.HORIZONTAL_ALIGN_FILL,true,true);
+		parentStyleGroupSel.setLayoutData(gridDataSel);
+		parentStyleGroupSel.setText("Common Uses:");
+
+		parentStyleGroup.setText("Select Components:");
+
+		checkUncheckAll = new Button(parentStyleGroup, SWT.CHECK|SWT.BOLD);
+		checkUncheckAll.setText("Select All");
+		checkUncheckAll.setToolTipText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+	
+		//Label info = new Label(parentStyleGroupSel,SWT.FILL);
+		//info.setText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+		checkUncheckAll.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (checkUncheckAll.getSelection()) {
+					setButtonsValue(true);
+				} else {
+					setButtonsValue(false);
+				}
+			}
+		});
+
+		
+		asposeCellsButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeCellsButton.setText(ECPluginConstants.ASPOSE_CELLS);
+		asposeCellsButton.setToolTipText(ECPluginConstants.ASPOSE_CELLS_FEATURE_TEXT);
+
+
+		asposeWordsButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeWordsButton.setText(ECPluginConstants.ASPOSE_WORDS);
+		asposeWordsButton.setToolTipText(ECPluginConstants.ASPOSE_WORDS_FEATURE_TEXT);
+
+		asposePdfButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposePdfButton.setText(ECPluginConstants.ASPOSE_PDF);
+		asposePdfButton.setToolTipText(ECPluginConstants.ASPOSE_PDF_FEATURE_TEXT);
+
+		asposeSlidesButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeSlidesButton.setText(ECPluginConstants.ASPOSE_SLIDES);
+		asposeSlidesButton.setToolTipText(ECPluginConstants.ASPOSE_SLIDES_FEATURE_TEXT);
+
+		asposePdfKitButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposePdfKitButton.setText(ECPluginConstants.ASPOSE_PDF_KIT);
+		asposePdfKitButton.setToolTipText(ECPluginConstants.ASPOSE_PDF_KIT_FEATURE_TEXT);
+
+		asposeBarcodeButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeBarcodeButton.setText(ECPluginConstants.ASPOSE_BARCODE);
+		asposeBarcodeButton.setToolTipText(ECPluginConstants.ASPOSE_BARCODE_FEATURE_TEXT);
+
+		asposeMetafilesButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeMetafilesButton.setText(ECPluginConstants.ASPOSE_METAFILES);
+		asposeMetafilesButton.setToolTipText(ECPluginConstants.ASPOSE_METAFILES_FEATURE_TEXT);
+
+		asposeEmailButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeEmailButton.setText(ECPluginConstants.ASPOSE_EMAIL);
+		asposeEmailButton.setToolTipText(ECPluginConstants.ASPOSE_EMAIL_FEATURE_TEXT);
+
+		asposeOCRButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeOCRButton.setText(ECPluginConstants.ASPOSE_OCR);
+		asposeOCRButton.setToolTipText(ECPluginConstants.ASPOSE_OCR_FEATURE_TEXT);
+
+		asposeImagingButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeImagingButton.setText(ECPluginConstants.ASPOSE_IMAGING);
+		asposeImagingButton.setToolTipText(ECPluginConstants.ASPOSE_IMAGING_FEATURE_TEXT);
+
+		Label info = new Label(parentStyleGroupSel,SWT.FILL);
+		info.setText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+		
+		Link javaHomeLink = new Link(parentStyleGroupSel,SWT.FILL);
+		javaHomeLink.setText("Visit <a href=\"aspose.com\">website </a>for details.");
+		javaHomeLink.addListener(SWT.Selection, new Listener() {
+		      public void handleEvent(Event event) {
+		        //System.out.println("Selection: " + event.text);
+		    	  try
+		    	  { 
+		    	  Process p=Runtime.getRuntime().exec("cmd /c start http://www.aspose.com/java/total-component.aspx"); 
+		    	  } 
+		    	  catch(IOException e1) 
+		    	  {System.out.println(e1);} 
+		    	  
+		      }
+		    });
+
+		/*checkUncheckAll = new Button(parentStyleGroup, SWT.CHECK|SWT.BOLD);
+		checkUncheckAll.setText("Select All");
+	
+		Label info = new Label(parentStyleGroupSel,SWT.FILL);
+		info.setText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+		checkUncheckAll.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (checkUncheckAll.getSelection()) {
+					setButtonsValue(true);
+				} else {
+					setButtonsValue(false);
+				}
+			}
+		});
+*/
+	}
+	void setButtonsValue(boolean value){
+		asposeWordsButton.setSelection(value);
+		asposeCellsButton.setSelection(value);
+		asposePdfButton.setSelection(value);
+		asposeSlidesButton.setSelection(value);
+		asposePdfKitButton.setSelection(value);
+		asposeBarcodeButton.setSelection(value);
+		asposeMetafilesButton.setSelection(value);
+		asposeEmailButton.setSelection(value);
+		asposeOCRButton.setSelection(value);
+		asposeImagingButton.setSelection(value);
+		
+		showMessage("My title", "My message");
+	}
+}

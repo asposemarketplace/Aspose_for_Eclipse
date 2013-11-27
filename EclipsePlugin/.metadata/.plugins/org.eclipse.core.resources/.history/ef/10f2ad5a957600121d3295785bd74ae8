@@ -1,0 +1,203 @@
+package com.aspose.ecplugin;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.URL;
+import java.net.UnknownHostException;
+import com.aspose.ecplugin.AsposeJavaComponent;
+import com.aspose.ecplugin.AsposeJavaComponents;
+import com.aspose.ecplugin.wizard.WizardNewProjectCreationPageCustom;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+public class AsposeComponentsManager {
+	WizardNewProjectCreationPageCustom _pageOne = null;
+	public AsposeComponentsManager(WizardNewProjectCreationPageCustom page)
+	{
+		_pageOne = page;
+	}
+
+	public boolean downloadComponents()
+	{
+		for(AsposeJavaComponent component:AsposeJavaComponents.list.values())
+		{
+			if(component.is_selected())
+			{
+				if(libraryAlreadyExists(component.get_downloadFileName()))
+				{
+					component.set_downloaded(true);
+				}
+				else
+				{
+					if(downloadFileFromInternet(component.get_downloadUrl(), component.get_downloadFileName()))
+					{
+						component.set_downloaded(true);
+						unZipFile();
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * 
+	 * @param libFileName
+	 * @return
+	 */
+	private boolean libraryAlreadyExists(String libFileName)
+	{
+		File confirmPath = new File(getLibaryDownloadPath() + libFileName);
+		if(confirmPath.exists())
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * 
+	 * @param urlStr
+	 * @param outputFile
+	 * @return
+	 */
+	public boolean downloadFileFromInternet(String urlStr, String outputFile) {
+		InputStream input;
+		int bufferSize = 512;
+		String localPath = getLibaryDownloadPath();
+		try {
+			URL url = new URL(urlStr);
+			input = url.openStream();
+			byte[] buffer = new byte[bufferSize];
+			File f = new File(localPath + outputFile);
+			OutputStream output = new FileOutputStream(f);
+			int bytes = 0;
+			long totalLength = input.available();
+			long pages = totalLength / bufferSize;
+			_pageOne.progressBar.setVisible(true);
+			_pageOne.progressBar.setMaximum((int) pages);
+			_pageOne.progressBar.setMinimum(0);
+			_pageOne.progressBar.setSelection(0);			
+
+			int currentPage = 0;
+			try {
+				int bytesRead;
+				while ((bytesRead = input.read(buffer, 0, buffer.length)) >= 0) {
+					output.write(buffer, 0, bytesRead);
+					bytes = bytes + buffer.length;
+					_pageOne.progressBar.setSelection(currentPage);
+					currentPage =currentPage + 1;
+				}               
+				_pageOne.progressBar.setSelection(0);
+				_pageOne.progressBar.setVisible(false);
+			} finally {
+				output.flush();
+				output.close();
+
+			}
+		} catch (Exception ex) {
+			_pageOne.progressBar.setSelection(0);
+			_pageOne.progressBar.setVisible(false);;
+			return false;
+		}
+		return true;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public static boolean isIneternetConnected()
+	{
+		try {
+			InetAddress address = InetAddress.getByName(ECPluginConstants.INTERNTE_CONNNECTIVITY_PING_URL);
+			if(address == null)
+			{
+				return false;
+			}
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static String getLibaryDownloadPath()
+	{
+		String path = "";
+		path = System.getProperty("user.home");
+		path = path + "/aspose/ecplugin/";
+		File confirmPath = new File(path);
+		if(!confirmPath.exists())
+			new File(path).mkdirs();
+		return path;
+	}
+
+	/**
+	 * 
+	 * @param zipFile
+	 * @param outputFolder
+	 */
+	public void unZipFile(String zipFile, String outputFolder){
+		 
+	     byte[] buffer = new byte[1024];
+	 
+	     try{
+	 
+	    	//create output directory is not exists
+	    	File folder = new File(outputFolder);
+	    	if(!folder.exists()){
+	    		folder.mkdir();
+	    	}
+	 
+	    	//get the zip file content
+	    	ZipInputStream zis = 
+	    		new ZipInputStream(new FileInputStream(zipFile));
+	    	//get the zipped file list entry
+	    	ZipEntry ze = zis.getNextEntry();
+	 
+	    	while(ze!=null){
+	 
+	    	   String fileName = ze.getName();
+	           File newFile = new File(outputFolder + File.separator + fileName);
+	 
+	           System.out.println("file unzip : "+ newFile.getAbsoluteFile());
+	 
+	            //create all non exists folders
+	            //else you will hit FileNotFoundException for compressed folder
+	            new File(newFile.getParent()).mkdirs();
+	 
+	            FileOutputStream fos = new FileOutputStream(newFile);             
+	 
+	            int len;
+	            while ((len = zis.read(buffer)) > 0) {
+	       		fos.write(buffer, 0, len);
+	            }
+	 
+	            fos.close();   
+	            ze = zis.getNextEntry();
+	    	}
+	 
+	        zis.closeEntry();
+	    	zis.close();
+	 
+	    	System.out.println("Done");
+	 
+	    }catch(IOException ex){
+	       ex.printStackTrace(); 
+	    }
+	   }    
+	
+}

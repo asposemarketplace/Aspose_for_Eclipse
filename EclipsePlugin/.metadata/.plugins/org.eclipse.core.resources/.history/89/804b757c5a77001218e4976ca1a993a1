@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.aspose.ecplugin.newproject.feature_1.0.0.qualifier.jar" id="com.aspose.ecplugin.newproject.feature" version="1.0.0.qualifier">
+      <category name="aspose_projects"/>
+   </feature>
+   <category-def name="aspose_projects" label="Aspose"/>
+</site>

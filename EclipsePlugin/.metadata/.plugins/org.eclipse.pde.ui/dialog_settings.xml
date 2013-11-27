@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="false" key="initLaunch"/>
+	<item value="false" key="generateActivator"/>
+	<item value="false" key="uiPlugin"/>
+	<item value="false" key="rcpPlugin"/>
+	<item value="false" key="apiAnalysis"/>
+	<item value="3.5 or greater" key="targetName"/>
+	<item value="false" key="osgiProject"/>
+	<list key="providers">
+		<item value="ASPOSE"/>
+	</list>
+	<section name="org.eclipse.pde.ui.dialogs.PluginSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="195" key="DIALOG_Y_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="668" key="DIALOG_X_ORIGIN"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
+	<section name="quick_assist_proposal_size">
+	</section>
+	<section name="PluginExportWizard">
+		<item value="true" key="exportUpdate"/>
+		<item value="false" key="saveAsAnt"/>
+		<item value="" key="alias"/>
+		<item value="Include source in exported plug-ins" key="exportSourceFormat"/>
+		<item value="false" key="qualifier"/>
+		<item value="" key="password"/>
+		<item value="" key="keypass"/>
+		<item value="false" key="exportSource"/>
+		<item value="false" key="useWorkspaceCompiledClasses"/>
+		<item value="" key="keystore"/>
+		<item value="1" key="exportType"/>
+		<item value="false" key="signJAR"/>
+		<item value="C:\Users\mohsan.raza\Desktop\deploy\mm" key="destination1"/>
+		<item value="C:\Users\mohsan.raza\Desktop\deploy\mm" key="destination0"/>
+		<item value="true" key="allowBinaryCycles"/>
+		<item value="201302151124" key="qualifierName"/>
+	</section>
+	<section name="pluginsView">
+	</section>
+	<section name="FeatureExportWizard">
+		<item value="true" key="exportUpdate"/>
+		<item value="Generate source bundles" key="exportSourceFormat"/>
+		<item value="false" key="qualifier"/>
+		<item value="true" key="create_categories"/>
+		<item value="" key="password"/>
+		<item value="false" key="jnlp"/>
+		<item value="" key="keypass"/>
+		<item value="false" key="useWorkspaceCompiledClasses"/>
+		<item value="" key="keystore"/>
+		<item value="1" key="exportType"/>
+		<item value="" key="siteURL"/>
+		<item value="false" key="saveAsAnt"/>
+		<item value="" key="alias"/>
+		<item value="true" key="p2metadata"/>
+		<item value="D:\Projects\Aspose\EclipsePlugin\com.aspose.ecplugin.newproject.feature\category.xml" key="category_file"/>
+		<item value="false" key="exportSource"/>
+		<item value="D:\DeployECPlugin2" key="destination5"/>
+		<item value="D:\DeployECPlugin3" key="destination4"/>
+		<item value="false" key="signJAR"/>
+		<item value="D:\DeployECPlugin4" key="destination3"/>
+		<item value="D:\DeployECPlugin5" key="destination2"/>
+		<item value="D:\DeployECPlugin7" key="destination1"/>
+		<item value="" key="jre"/>
+		<item value="D:\DeployECPlugin7" key="destination0"/>
+		<item value="true" key="allowBinaryCycles"/>
+		<item value="201302151401" key="qualifierName"/>
+	</section>
+	<section name="JavaAttributeWizard">
+		<section name="NewClassWizardPage">
+			<item value="false" key="create_constructor"/>
+			<item value="false" key="create_main"/>
+			<item value="true" key="create_unimplemented"/>
+		</section>
+	</section>
+</section>

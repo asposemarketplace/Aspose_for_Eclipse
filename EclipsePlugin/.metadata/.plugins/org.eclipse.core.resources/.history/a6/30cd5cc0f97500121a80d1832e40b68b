@@ -1,0 +1,73 @@
+/*
+ * Copyright (c) 2001-2013 Aspose Pty Ltd. All Rights Reserved.
+ */
+
+package com.aspose.ecplugin;
+
+public class ECPluginConstants {
+
+	/**
+	 * Constants
+	 */
+	public static final String NATURE_ID_JDT = "org.eclipse.jdt.core.javanature";
+	public static final String ORG_ECLIPSE_JDT_LAUNCHING_CONTAINER = "org.eclipse.jdt.launching.JRE_CONTAINER";
+	public static final String NATURE_ID = "com.aspose.ecplugin.projectNature";
+	public static final String ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER = "org.eclipse.jdt.core.javabuilder";
+	public static final String SRC_FOLDER = "src";
+	public static final String LIB_FOLDER = "lib";
+	public static final String BIN_FOLDER = "bin";
+	public static final String FIRST_PAGE_NAME = "Aspose Project Wizard";
+	public static final String FIRST_PAGE_TITLE = "Aspose New Project";
+	public static final String FIRST_PAGE_DESCRIPTION = "Create Aspose New Project";
+	public static final String WIZARD_NAME = "Aspose new project";
+
+	//Aspose Java components
+	public static final String ASPOSE_CELLS = "Aspose.Cells";
+	public static final String ASPOSE_WORDS = "Aspose.Words";	
+	public static final String ASPOSE_PDF = "Aspose.Pdf";
+	public static final String ASPOSE_SLIDES = "Aspose.Slides";	
+	public static final String ASPOSE_PDF_KIT = "Aspose.Pdf.Kit";
+	public static final String ASPOSE_BARCODE = "Aspose.BarCode";	
+	public static final String ASPOSE_METAFILES = "Aspose.Metafiles";
+	public static final String ASPOSE_EMAIL = "Aspose.Email";	
+	public static final String ASPOSE_OCR = "Aspose.OCR";
+	public static final String ASPOSE_IMAGING = "Aspose.Imaging";
+
+	//advertise
+	public static final String ASPOSE_ALL_COMPONENTS_TEXT = "» Generate reports using mail merge"
+			+"\n» Excel Reporting - Build dynamic Excel reports on the fly"
+			+"\n» Create Excel dashboards, incorporating charts and pivot tables"
+			+"\n» High-fidelity Excel rendering and printing"
+			+"\n» Create new PDF documents using the product API"
+			+"\n» Transform an XML document into PDF format"
+			+"\n» Convert an Image file into PDF format"
+			+"\n» Create new slides or clone existing slides from templates"
+			+"\n» Add, remove, replace or extract text from PDF files"
+			+"\n» Add, remove, replace or extract images from PDF files"
+			+"\n» Convert a PDF file to an image"
+			+"\n» Generate barcode images and save to stream or image file"
+			+"\n» Recognize barcodes from stream or image file"
+			+"\n» Render Windows metafiles (WMF) to images"
+			+"\n» Convert Windows metafiles (WMF) to other graphics formats";
+
+	public static final String ASPOSE_CELLS_FEATURE_TEXT = "Aspose.Cells for Java is an Excel® spreadsheet reporting component that enables Java applications to create and manage Excel® spreadsheets without using Microsoft Excel®. Aspose.Cells for Java is an incredibly feature rich component that offers much more than just basic data export functions.";
+	public static final String ASPOSE_WORDS_FEATURE_TEXT = "Aspose.Words for Java is an advanced class library for Java that enables you to perform a great range of document processing tasks directly within your Java applications." 
+			+ "Aspose.Words for Java supports DOC, OOXML, RTF, HTML and OpenDocument formats. With Aspose.Words you can generate, modify, and convert documents without using Microsoft Word.";	
+	public static final String ASPOSE_PDF_FEATURE_TEXT = "Aspose.Pdf for Java is a PDF document creation component that enables your Java applications to read, write and manipulate PDF documents without using Adobe Acrobat.";
+	public static final String ASPOSE_SLIDES_FEATURE_TEXT = "Aspose.Slides for Java is a unique PowerPoint management component that enables Java applications to read, write and manipulate PowerPoint documents without using Microsoft PowerPoint."
+			+"Aspose.Slides for Java supports formats including PPT, PPS, POT and PresentationML (OOXML, PPTX). ";	
+	public static final String ASPOSE_PDF_KIT_FEATURE_TEXT = "Aspose.Pdf.Kit for Java is a PDF document manipulation component that enables Java developers to manage and manipulate existing PDF files as well as manage form fields embedded within PDF files."
+			+ "If you need to create new PDF files, Aspose.Pdf is the right tool. But developers often need to edit pre-existing PDF documents and for this task, Aspose.Pdf.Kit is the tool to use.";
+	public static final String ASPOSE_BARCODE_FEATURE_TEXT = "Aspose.BarCode for Java is a robust and reliable barcode generation and recognition component, written in Java, it allows developers to quickly and easily add barcode generation and recognition functionality to their Java applications."
+			+"Aspose.BarCode for Java supports the Java SE, Java EE and Java ME platforms.";	
+	public static final String ASPOSE_METAFILES_FEATURE_TEXT = "With Aspose.Metafiles for Java, your development staff will be able to convert metafiles to other popular graphic format."
+			+ "Aspose.Metafiles for Java is your solution for effectively managing metafiles. It allows your Java applications to quickly and easily display and play both WMF and EMF files. It also offers support for metafile conversions.";
+	public static final String ASPOSE_EMAIL_FEATURE_TEXT = "Aspose.Email for Java is a Java class library that enables Java applications to read and write Outlook MSG files without Microsoft Outlook. It provides classes to read and update MSG files, add/remove attachments and recipients, update subject, body and other MSG file properties.";	
+	public static final String ASPOSE_OCR_FEATURE_TEXT = "Aspose.OCR for Java is a character recognition component built to allow developers to add OCR functionality in their Java applications. Aspose.OCR provides simple set of classes that allow developers to recognize characters from the images.";
+	public static final String ASPOSE_IMAGING_FEATURE_TEXT = "Aspose.Imaging for Java is an imaging library"
+															+"\n that lets developers create, edit, draw or"
+															+"\n convert images in their Java applications with ease and performance. It offers broad spectrum of traditional image processing operations as well as most demanded features that makes it most widely used imaging engine.";
+
+
+
+}

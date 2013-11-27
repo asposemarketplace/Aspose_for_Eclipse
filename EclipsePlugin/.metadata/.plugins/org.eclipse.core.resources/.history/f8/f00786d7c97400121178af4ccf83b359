@@ -1,0 +1,7 @@
+package com.aspose.ecplugin;
+
+public class ECPluginConstants {
+	
+	public static final String NATURE_ID_JDT = "org.eclipse.jdt.core.javanature";	
+
+}

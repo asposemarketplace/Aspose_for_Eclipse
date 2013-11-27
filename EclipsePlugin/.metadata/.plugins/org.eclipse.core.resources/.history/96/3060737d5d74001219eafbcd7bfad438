@@ -1,0 +1,111 @@
+package com.aspose.ecplugin;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IProjectNature;
+import org.eclipse.core.runtime.CoreException;
+
+
+public class ProjectNature implements IProjectNature {
+
+	//public static final String NATURE_ID = "com.aspose.ecplugin.projectNature"; //$NON-NLS-1$
+	public static final String NATURE_ID = "org.eclipse.jdt.core.javanature"; //$NON-NLS-1$
+	private IProject project;
+	
+	@Override
+	public void configure() throws CoreException {
+		// TODO Auto-generated method stub
+		//addBuilderToBuildSpec();
+		
+	}
+
+	
+	@Override
+	public void deconfigure() throws CoreException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public IProject getProject() {
+		// TODO Auto-generated method stub
+		return project;
+		//return null;
+	}
+
+	@Override
+	public void setProject(IProject prj) {
+		// TODO Auto-generated method stub
+		project = prj;
+	}
+	
+	private static void addBuildCommand(IProject project) throws CoreException {
+    	IProjectDescription description = project.getDescription();
+		ICommand[] buildCommands = description.getBuildSpec();
+		ICommand command = description.newCommand();
+		command.setBuilderName("org.eclipse.jdt.core.javabuilder");
+		
+		ICommand[] newBuildCommands;
+		if ( contains( buildCommands, "org.eclipse.jdt.core.javabuilder" ) ) {
+			newBuildCommands = swap( buildCommands, "org.eclipse.jdt.core.javabuilder", command );
+		} else {
+			newBuildCommands = remove( buildCommands, "org.eclipse.jdt.core.javabuilder" );
+		}			
+		
+		description.setBuildSpec(newBuildCommands);
+		project.setDescription(description, null);
+    }
+    private static ICommand[] insert( ICommand[] sourceCommands, ICommand command ) {
+		ICommand[] newCommands = new ICommand[ sourceCommands.length + 1 ];
+		newCommands[0] = command;
+		for (int i = 0; i < sourceCommands.length; i++ ) {
+			newCommands[i+1] = sourceCommands[i];
+		}		
+		return newCommands;		
+	}
+    
+    private static ICommand[] remove( ICommand[] sourceCommands, String builderId ) {
+		ICommand[] newCommands = new ICommand[ sourceCommands.length - 1 ];
+		int newCommandIndex = 0;
+		for (int i = 0; i < sourceCommands.length; i++ ) {
+			if ( !sourceCommands[i].getBuilderName( ).equals( builderId ) ) {
+				newCommands[newCommandIndex++] = sourceCommands[i];
+			}
+		}		
+		return newCommands;		
+	}
+    
+    
+    private static boolean contains(ICommand[] commands, String builderId) {
+		boolean found = false;
+		for (int i = 0; i < commands.length; i++) {
+			if (commands[i].getBuilderName().equals(builderId)) {
+				found = true;
+				break;
+			}
+		}
+		return found;
+	}
+    
+    private static ICommand[] swap(
+    		ICommand[] sourceCommands,
+    		String oldBuilderId,
+    		ICommand newCommand) 
+    	{
+    		ICommand[] newCommands = new ICommand[sourceCommands.length];
+    		for ( int i = 0; i < sourceCommands.length; i++ ) {
+    			if ( sourceCommands[i].getBuilderName( ).equals( oldBuilderId ) ) {
+    				newCommands[i] = newCommand;
+    			} else {
+    				newCommands[i] = sourceCommands[i];
+    			}
+    		}	
+    		return newCommands;	
+    	}
+
+
+}

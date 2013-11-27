@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.aspose.ecplugin.newproject.feature"
+      label="Aspose new project wizard"
+      version="1.0.4"
+      provider-name="ASPOSE">
+
+   <description url="http://aspose.com">
+      Creates new project for Aspose selected products after downloading them automatically.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      Aspose copyright 2013
+   </copyright>
+
+   <license url="http://aspose.com">
+      None
+   </license>
+
+   <url>
+      <discovery label="aspose.com" url="http://www.aspose.com/java/total-component.aspx"/>
+   </url>
+
+   <plugin
+         id="com.aspose.ecplugin"
+         download-size="0"
+         install-size="0"
+         version="1.0.4"
+         unpack="false"/>
+
+</feature>
