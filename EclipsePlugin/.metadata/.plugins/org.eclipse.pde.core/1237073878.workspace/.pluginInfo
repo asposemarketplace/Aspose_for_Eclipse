@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="444" class="com.aspose.ecplugin.Activator" localization="OSGI-INF/l10n/bundle" name="Aspose Ecplugin" project="com.aspose.ecplugin" provider="ASPOSE"/>
-</map>
