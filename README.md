@@ -32,6 +32,3 @@ Below simple steps will smoothly lead to successful configuration of Aspose Proj
 3. Select "General -> Existing Projects into Workspace".
 4. Browse to select the root directory of the downloaded projects. It will display 3 separate projects for plugin, feature and updatesite.
 5. Pressing "Finish" will make Aspose Eclipse plugin code ready to enhance.
-
-
-
