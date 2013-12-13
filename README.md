@@ -24,7 +24,7 @@ This plugin helps you to explore Aspose Java components inside your favorite IDE
 - Drag and drop installation from [Eclipse Marketplace](http://marketplace.eclipse.org/content/aspose-project-wizard) to your Eclipse workspace.
 - Follow the simple [steps for plugin usage](http://www.aspose.com/blogs/aspose-business/news-release/archive/2013/03/02/announcing-aspose-eclipse-plugin-released.html) from aspose blog.
 
-###How to configure Aspose Project Wizard source code
+###How to configure source code of Aspose Project Wizard
 Below simple steps will smoothly lead to successful configuration of Aspose Project Wizard source code in Eclipse IDE
 
 1. Download / Clone the source code.
