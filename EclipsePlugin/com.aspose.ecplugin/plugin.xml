@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="com.aspose.ecplugin.category.wizard"
-            name="Aspose Wizard">
+            name="Aspose Application">
       </category>
       <wizard
             category="com.aspose.ecplugin.category.wizard"
@@ -14,7 +14,7 @@
             helpHref="aspose.com"
             icon="icons/aspose.png"
             id="com.aspose.ecplugin.wizard.new.project"
-            name="Aspose Project"
+            name="Aspose Application"
             project="true">
       </wizard>
       <wizard
@@ -22,7 +22,7 @@
             class="com.aspose.ecplugin.wizard.file.NewFileWizard"
             icon="icons/aspose.png"
             id="com.aspose.ecplugin.wizard.file.NewFileWizard"
-            name="Aspose New File">
+            name="Aspose Example">
       </wizard>
    </extension>
    <extension
@@ -42,5 +42,4 @@
          point="org.eclipse.core.resources.builders">
       <builder></builder>
    </extension>
-
 </plugin>

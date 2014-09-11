@@ -7,6 +7,7 @@ import java.awt.Desktop;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,27 +17,30 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
-
-import com.aspose.AsposeDownloadsSoapProxy;
-import com.aspose.ProductRelease;
+import com.aspose.componentsdownload.ObjectFactoryComponents;
+import com.aspose.componentsdownload.ProductRelease;
 import com.aspose.ecplugin.AsposeJavaComponent;
 import com.aspose.ecplugin.AsposeJavaComponents;
 import com.aspose.ecplugin.wizard.WizardNewProjectCreationPageCustom;
-
-import java.rmi.RemoteException;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
-
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.SWT;
 
 /**
@@ -50,88 +54,143 @@ public class AsposeComponentsManager {
 	{
 		_pageOne = page;
 	}
-
+	 private boolean result=false;
 	/**
 	 * 
 	 * @return
 	 */
+	 /**
+	  * Modified By: Adeel Ilyas (9/5/2014)
+	  * 
+	  */
 	public boolean downloadComponents()
 	{
-		if(!isIneternetConnected())
-		{
-			_pageOne.showMessage(ECPluginConstants.INTERNET_CONNECTION_REQUIRED_MESSAGE_TITLE, ECPluginConstants.INTERNET_CONNECTION_REQUIRED_MESSAGE, SWT.ICON_WARNING | SWT.OK);
-			return false;
-		}
-
-		for(AsposeJavaComponent component:AsposeJavaComponents.list.values())
-		{
-
-			if(component.is_selected())
+		ProgressMonitorDialog dialog = new ProgressMonitorDialog(null); 
+		
+		try {
+			dialog.run(true, true, new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) { 
+					 
+					 
+			
+			if(!isIneternetConnected())
 			{
-				ProductRelease productRelease = getProductReleaseInfo(component.get_name());
-				component.set_downloadUrl(productRelease.getDownloadLink());
-				component.set_downloadFileName(productRelease.getFileName());
-				component.set_changeLog(productRelease.getChangeLog());
-				component.set_latestVersion(productRelease.getVersionNumber());
-				if(libraryAlreadyExists(component.get_downloadFileName()))
+				_pageOne.showMessage(AsposeConstants.INTERNET_CONNECTION_REQUIRED_MESSAGE_TITLE, AsposeConstants.INTERNET_CONNECTION_REQUIRED_MESSAGE, SWT.ICON_WARNING | SWT.OK);
+				 result=false;
+				
+			} else result=true;
+			
+			if (result) {
+				monitor.beginTask("Downloading selected Aspose APIs ...",Integer.MAX_VALUE); 
+			
+				monitor.subTask("Preparing to download selected APIs");
+				long totalbytes=0;
+				
+				for(AsposeJavaComponent component:AsposeJavaComponents.list.values())
 				{
-					String currentComponentVersion = readVersion(component);
-					component.set_currentVersion(currentComponentVersion);
-					
-					if(currentComponentVersion != null && currentComponentVersion.equals(component.get_latestVersion())  )
+				
+					if(component.is_selected())
 					{
-
-						component.set_downloaded(true);
-						//storeVersion(component);
+					try {	
+						ProductRelease productRelease = getProductReleaseInfo(component.get_downloadUrl());
+						component.set_downloadUrl(productRelease.getDownloadLink());
+						component.set_downloadFileName(productRelease.getFileName());
+						component.set_changeLog(productRelease.getChangeLog());
+						component.set_latestVersion(productRelease.getVersionNumber());
+						component.set_downloadlength(getFileDownloadLength(component.get_downloadUrl()));
+						totalbytes+=component.get_downloadlength();
+					} catch (StringIndexOutOfBoundsException ex) {
+						component.set_selected(false);
 					}
-					else
+					}
+				}
+				monitor.worked(350);
+				double unitsperbyte = (Integer.MAX_VALUE-350)/totalbytes; 
+				
+				
+				for(AsposeJavaComponent component:AsposeJavaComponents.list.values())
+			{
+			if (!monitor.isCanceled()) {
+				if(component.is_selected())
+				{
+					
+					if(libraryAlreadyExists(component.get_downloadFileName()))
 					{
-						storeReleaseNotes(component);
-						String htmlFilePath = getLibaryDownloadPath()+  component.get_name() + ".htm"; // path to your new file
-						File htmlFile = new File(htmlFilePath);
-
-						// open the default web browser for the HTML page
-						try {
-							Desktop.getDesktop().browse(htmlFile.toURI());
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-
-						try {
-							Desktop.getDesktop().open(htmlFile);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						if(_pageOne.showMessage(component.get_name()+ " - " + ECPluginConstants.NEW_VERSION_MESSAGE_TITLE, ECPluginConstants.NEW_VERSION_MESSAGE +"\nLatest Version: "+ component.get_latestVersion() +"\nCurrent Version: "+ component.get_currentVersion() , SWT.ICON_INFORMATION | SWT.YES|SWT.NO) == SWT.YES)
+						String currentComponentVersion = readVersion(component);
+						component.set_currentVersion(currentComponentVersion);
+						
+						if(currentComponentVersion != null && currentComponentVersion.equals(component.get_latestVersion())  )
 						{
-							if(downloadFileFromInternet(component.get_downloadUrl(), component.get_downloadFileName()))
-							{
-								component.set_downloaded(true);
-								storeVersion(component);
-							}	
+
+							component.set_downloaded(true);
+							monitor.worked((int) Math.round(unitsperbyte*component.get_downloadlength()));
+							//storeVersion(component);
 						}
 						else
 						{
-							component.set_downloaded(true);
+							storeReleaseNotes(component);
+							String htmlFilePath = getLibaryDownloadPath()+  component.get_name() + ".htm"; // path to your new file
+							File htmlFile = new File(htmlFilePath);
+
+							// open the default web browser for the HTML page
+							try {
+								Desktop.getDesktop().browse(htmlFile.toURI());
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+
+							try {
+								Desktop.getDesktop().open(htmlFile);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							if(_pageOne.showMessage(component.get_name()+ " - " + AsposeConstants.NEW_VERSION_MESSAGE_TITLE, AsposeConstants.NEW_VERSION_MESSAGE +"\nLatest Version: "+ component.get_latestVersion() +"\nCurrent Version: "+ component.get_currentVersion() , SWT.ICON_INFORMATION | SWT.YES|SWT.NO) == SWT.YES)
+							{
+								if(downloadFileFromInternet(component.get_downloadUrl(), component.get_downloadFileName(),component.get_name(),monitor,unitsperbyte))
+								{
+									component.set_downloaded(true);
+									storeVersion(component);
+									
+								}	
+							}
+							else
+							{
+								component.set_downloaded(true);
+								monitor.worked((int) Math.round(unitsperbyte*component.get_downloadlength()));
+							}
 						}
-					}
-				}
-				else
-				{
-					if(downloadFileFromInternet(component.get_downloadUrl(), component.get_downloadFileName()))
-					{
-						component.set_downloaded(true);
-						storeVersion(component);
 					}
 					else
 					{
-						return false;
+						if(downloadFileFromInternet(component.get_downloadUrl(), component.get_downloadFileName(),component.get_name(),monitor,unitsperbyte))
+						{
+							component.set_downloaded(true);
+							storeVersion(component);
+						}
+						else
+						{
+							result=false;
+							
+						}
 					}
 				}
-			}
+			} else {
+			monitor.subTask("Cancelling..");
+				break;
+				
+			}}
+				}
+			monitor.done();
+				}});
+		} catch (InvocationTargetException e) {
+			result=false;
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			result=false;
+			e.printStackTrace();
 		}
-
-		return true;
+		
+		return result;
 	}
 
 	/**
@@ -202,25 +261,46 @@ public class AsposeComponentsManager {
 
 	}
 	
-	/**
-	 * 
-	 * @param productName
-	 * @return
-	 */
-	public ProductRelease getProductReleaseInfo(String productName)
-	{
-		AsposeDownloadsSoapProxy proxy = new AsposeDownloadsSoapProxy();
-		proxy.setEndpoint(ECPluginConstants.WEBSERVICE_ENDPOINT);
+	 /**
+    *
+    * @param productUrl
+    * @return
+    */
+   public ProductRelease getProductReleaseInfo(String productUrl) {
 
-		try {
-			return proxy.getProductRelease("Java", productName);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+       ProductRelease data = null;
+       try {
+           String productInfo;
+           productInfo = readURLContents(productUrl);
+           productInfo = productInfo.substring(40);
+           JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactoryComponents.class);
+           Unmarshaller unmarshaller;
+           unmarshaller = jaxbContext.createUnmarshaller();
+           data = (ProductRelease) unmarshaller.unmarshal(new StreamSource(new StringReader (productInfo.toString())));
+       } catch (StringIndexOutOfBoundsException ex) {
+    	   throw ex;
+    	   
+       }  catch (Exception ex) {
+           ex.printStackTrace();
+       }
 
-		return null;
-	}
-
+       return data;
+   }
+   public String readURLContents(String Url) throws MalformedURLException, IOException {
+       URL url = new URL(Url);
+       URLConnection con = url.openConnection();
+       InputStream in = con.getInputStream();
+       String encoding = con.getContentEncoding();
+       encoding = encoding == null ? "UTF-8" : encoding;
+       ByteArrayOutputStream baos = new ByteArrayOutputStream();
+       byte[] buf = new byte[8192];
+       int len = 0;
+       while ((len = in.read(buf)) != -1) {
+           baos.write(buf, 0, len);
+       }
+       String body = new String(baos.toByteArray(), encoding);
+       return body;
+   }
 	/**
 	 * 
 	 * @param libFileName
@@ -265,7 +345,8 @@ public class AsposeComponentsManager {
 	 * @param outputFile
 	 * @return
 	 */
-	public boolean downloadFileFromInternet(String urlStr, String outputFile) {
+	public boolean downloadFileFromInternet(String urlStr, String outputFile,String componentName, IProgressMonitor monitor,double unitsperbyte) {
+		monitor.subTask(componentName);
 		InputStream input;
 		int bufferSize = 4096;
 		String localPath = getLibaryDownloadPath();
@@ -276,12 +357,6 @@ public class AsposeComponentsManager {
 			File f = new File(localPath + outputFile);
 			OutputStream output = new FileOutputStream(f);
 			int bytes = 0;
-			long totalLength = getFileDownloadLength(urlStr);
-			long pages = totalLength / bufferSize;
-			_pageOne.progressBar.setVisible(true);
-			_pageOne.progressBar.setMaximum((int) pages);
-			_pageOne.progressBar.setMinimum(0);
-			_pageOne.progressBar.setSelection(0);			
 
 			int currentPage = 0;
 			try {
@@ -289,24 +364,22 @@ public class AsposeComponentsManager {
 				while ((bytesRead = input.read(buffer, 0, buffer.length)) >= 0) {
 					output.write(buffer, 0, bytesRead);
 					bytes = bytes + buffer.length;
-					_pageOne.progressBar.setSelection(currentPage);
-					_pageOne.progressBar.redraw();
 					currentPage =currentPage + 1;
+					if (monitor.isCanceled()) {
+						monitor.subTask("Cancelling...");
+					}
+					monitor.worked((int) Math.round(unitsperbyte*bytesRead));
+
 				}               
 
 				output.flush();
 				output.close();
-				_pageOne.progressBar.setSelection(currentPage);
 				extractFolder(localPath + outputFile, localPath + removeExtention(outputFile) );
 
-				_pageOne.progressBar.setSelection(0);
-				_pageOne.progressBar.setVisible(false);
 			} finally {
 
 			}
 		} catch (Exception ex) {
-			_pageOne.progressBar.setSelection(0);
-			_pageOne.progressBar.setVisible(false);;
 			return false;
 		}
 		return true;
@@ -339,7 +412,7 @@ public class AsposeComponentsManager {
 	public static boolean isIneternetConnected()
 	{
 		try {
-			InetAddress address = InetAddress.getByName(ECPluginConstants.INTERNTE_CONNNECTIVITY_PING_URL);
+			InetAddress address = InetAddress.getByName(AsposeConstants.INTERNTE_CONNNECTIVITY_PING_URL);
 			if(address == null)
 			{
 				return false;

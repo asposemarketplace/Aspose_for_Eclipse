@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Aspose Ecplugin
 Bundle-SymbolicName: com.aspose.ecplugin;singleton:=true
-Bundle-Version: 1.0.4
+Bundle-Version: 1.1
 Bundle-Activator: com.aspose.ecplugin.Activator
 Bundle-Vendor: ASPOSE
 Require-Bundle: org.eclipse.ui,

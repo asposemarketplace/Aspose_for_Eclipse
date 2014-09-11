@@ -15,9 +15,11 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.core.resources.*;
 import org.eclipse.core.runtime.CoreException;
+
 import java.io.*;
 
 import org.eclipse.ui.*;
+
 import com.aspose.ecplugin.AsposeJavaComponent;
 import com.aspose.ecplugin.AsposeJavaComponents;
 import com.aspose.ecplugin.examplesmodel.Example;
@@ -84,6 +86,7 @@ public class NewFileWizard extends Wizard implements INewWizard {
 		};
 		try {
 			getContainer().run(true, false, op);
+
 		} catch (InterruptedException e) {
 			return false;
 		} catch (InvocationTargetException e) {
