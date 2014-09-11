@@ -5,7 +5,7 @@
 
 package com.aspose.ecplugin;
 
-public class ECPluginConstants {
+public class AsposeConstants {
 
 	/**
 	 * Constants
@@ -16,14 +16,15 @@ public class ECPluginConstants {
 	public static final String ASPOSE_WORDS = "Aspose.Words";	
 	public static final String ASPOSE_PDF = "Aspose.Pdf";
 	public static final String ASPOSE_SLIDES = "Aspose.Slides";	
-	public static final String ASPOSE_PDF_KIT = "Aspose.Pdf.Kit";
 	public static final String ASPOSE_BARCODE = "Aspose.BarCode";	
 	public static final String ASPOSE_METAFILES = "Aspose.Metafiles";
 	public static final String ASPOSE_EMAIL = "Aspose.Email";	
 	public static final String ASPOSE_OCR = "Aspose.OCR";
 	public static final String ASPOSE_IMAGING = "Aspose.Imaging";
-	
-	public static final String WEBSERVICE_ENDPOINT = "http://community.aspose.com/community/SecureServices/AsposeDownloads.asmx";
+	public static final String ASPOSE_DIAGRAM = "Aspose.Diagram";
+	public static final String ASPOSE_TASKS = "Aspose.Tasks";
+
+	//public static final String WEBSERVICE_ENDPOINT = "http://community.aspose.com/community/SecureServices/AsposeDownloads.asmx";
 
 	//Project 
 	public static final String NATURE_ID_JDT = "org.eclipse.jdt.core.javanature";
@@ -44,7 +45,6 @@ public class ECPluginConstants {
 	public static final String IS_COMPONENT_SELECTED ="Please select at least one Aspose library to create a new project";
 	public static final String INTERNET_CONNECTION_REQUIRED_MESSAGE_TITLE ="Internet connectivity";
 	public static final String INTERNET_CONNECTION_REQUIRED_MESSAGE ="Internet connectivity is required to download Aspose libraries";
-	public static final String ASPOSE_JAVA_COMP_LINK_TEXT = "Visit <a href=\"www.aspose.com\">Aspose </a>for more details.";
 	public static final String NEW_VERSION_MESSAGE_TITLE = "New version available";
 	public static final String NEW_VERSION_MESSAGE = "New version is available, do you want to download it? browser is opened with release notes";
 
@@ -65,9 +65,9 @@ public class ECPluginConstants {
 			+"\n» Add, remove, replace or extract images from PDF files"
 			+"\n» Convert a PDF file to an image"
 			+"\n» Generate barcode images and save to stream or image file"
+			+"\n» Project management, such as project planning, definition and tracking"
 			+"\n» Recognize barcodes from stream or image file"
-			+"\n» Render Windows metafiles (WMF) to images"
-			+"\n» Convert Windows metafiles (WMF) to other graphics formats";
+			+"\n» Create, load and manipulate Microsoft Visio drawings within Java application";
 
 	public static final String ASPOSE_CELLS_FEATURE_TEXT = 
 			"Aspose.Cells for Java is an Excel® " +
@@ -121,15 +121,15 @@ public class ECPluginConstants {
 			"\n functionality to their Java applications."
 			+"\nAspose.BarCode for Java supports the Java SE, " +
 			"\nJava EE and Java ME platforms.";	
-	public static final String ASPOSE_METAFILES_FEATURE_TEXT = 
-			"With Aspose.Metafiles for Java, your development" +
-			"\n staff will be able to convert metafiles to " +
-			"\nother popular graphic format."
-			+ "\nAspose.Metafiles for Java is your solution for " +
-			"\neffectively managing metafiles. It allows your " +
-			"\nJava applications to quickly and easily display " +
-			"\nand play both WMF and EMF files. It also offers " +
-			"\nsupport for metafile conversions.";
+	public static final String ASPOSE_TASKS_FEATURE_TEXT = 
+			"Aspose.Tasks for Java is a project management " +
+			"\nAPI that enables Java application developers " +
+			"\nto provide Microsoft Project® document manipulation" +
+			"\n capability in their applications – all without " +
+			"\nusing Microsoft Project®. With this powerful API, "+
+			"\ndevelopers can control various stages of project" +
+			"\n management, such as project planning, definition"+
+			"\n and tracking.";	
 	public static final String ASPOSE_EMAIL_FEATURE_TEXT   = 
 			"Aspose.Email for Java is a Java class library " +
 			"\nthat enables Java applications to read and " +
@@ -152,7 +152,22 @@ public class ECPluginConstants {
 			+"\nspectrum of traditional image processing " 
 			+"\noperations as well as most demanded features " 
 			+"\nthat makes it most widely used imaging engine.";
-
-
+	public static final String ASPOSE_DIAGRAM_FEATURE_TEXT = 
+			"Aspose.Diagram for Java is a Non-Graphical and " +
+			"\nwell-structured API that allows developers to load, " +
+			"\ncreate, save and manipulate Microsoft Visio " +
+			"\ndrawings within a Java application without using " +
+			"\nMicrosoft Visio. It provides better performance and "
+			+"\nis easier to use to manipulate diagrams and convert " +
+			"\nfiles than Microsoft Office Automation.";	
+	private static final boolean printing_allowed = true; 
+	
+	public static final void println(String message)
+    {
+        if(printing_allowed)
+        {
+            System.out.println(message);
+        }
+    }
 
 }

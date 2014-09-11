@@ -6,6 +6,7 @@
 package com.aspose.ecplugin;
 
 public class AsposeJavaComponent {
+	private long _downloadlength;
 	private String _name;
 	private boolean _selected;
 	private String _downloadUrl;
@@ -158,6 +159,12 @@ public class AsposeJavaComponent {
 	 */
 	public void set_remoteExamplesRepository(String _remoteExamplesRepository) {
 		this._remoteExamplesRepository = _remoteExamplesRepository;
+	}
+	public long get_downloadlength() {
+		return _downloadlength;
+	}
+	public void set_downloadlength(long _downloadlength) {
+		this._downloadlength = _downloadlength;
 	}
 
 

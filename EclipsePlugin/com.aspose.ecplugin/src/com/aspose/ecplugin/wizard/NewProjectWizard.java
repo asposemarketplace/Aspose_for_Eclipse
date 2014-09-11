@@ -23,7 +23,7 @@ import com.aspose.ecplugin.AsposeComponentsManager;
 import com.aspose.ecplugin.AsposeJavaComponent;
 import com.aspose.ecplugin.AsposeJavaComponents;
 import com.aspose.ecplugin.CustomProjectSupport;
-import com.aspose.ecplugin.ECPluginConstants;
+import com.aspose.ecplugin.AsposeConstants;
 
 public class NewProjectWizard extends Wizard implements INewWizard,
 IExecutableExtension {
@@ -37,7 +37,7 @@ IExecutableExtension {
 	 * 
 	 */
 	public NewProjectWizard() {
-		setWindowTitle(ECPluginConstants.WIZARD_NAME);
+		setWindowTitle(AsposeConstants.WIZARD_NAME);
 	}
 
 	/**
@@ -67,7 +67,7 @@ IExecutableExtension {
 		}
 
 		IProject project = CustomProjectSupport.createProject(name, location);
-		IFolder libFolder = project.getFolder(ECPluginConstants.BIN_FOLDER);
+		IFolder libFolder = project.getFolder(AsposeConstants.BIN_FOLDER);
 
 		try {
 			libFolder.delete(true, null);
@@ -83,65 +83,59 @@ IExecutableExtension {
 	 * 
 	 */
 	void processComponents() {
-		new AsposeJavaComponents();
+		AsposeJavaComponents.clearSelection();
 		if (_pageOne.asposeCellsButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_CELLS);
+					.get(AsposeConstants.ASPOSE_CELLS);
 			component.set_selected(true);
 		}	
 
 		if (_pageOne.asposeWordsButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_WORDS);
+					.get(AsposeConstants.ASPOSE_WORDS);
 			component.set_selected(true);
 		}
 		if (_pageOne.asposePdfButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_PDF);
+					.get(AsposeConstants.ASPOSE_PDF);
 			component.set_selected(true);
-			
-			AsposeJavaComponent component2 = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_PDF_KIT);
-			component2.set_selected(true);
 			
 		}
 		if (_pageOne.asposeSlidesButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_SLIDES);
+					.get(AsposeConstants.ASPOSE_SLIDES);
 			component.set_selected(true);
 		}
-		if (_pageOne.asposePdfKitButton.getSelection()) {
-			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_PDF_KIT);
-			component.set_selected(true);
-		}
+	
 		if (_pageOne.asposeBarcodeButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_BARCODE);
+					.get(AsposeConstants.ASPOSE_BARCODE);
 			component.set_selected(true);
 		}
-		// Commented as we currently not showing MetaFiles Component in Wizard Options
-		/*
-		if (_pageOne.asposeMetafilesButton.getSelection()) {
+		if (_pageOne.asposeTasksButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_METAFILES);
+					.get(AsposeConstants.ASPOSE_TASKS);
 			component.set_selected(true);
 		}
-		*/
 		
 		if (_pageOne.asposeEmailButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_EMAIL);
+					.get(AsposeConstants.ASPOSE_EMAIL);
 			component.set_selected(true);
 		}
 		if (_pageOne.asposeOCRButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_OCR);
+					.get(AsposeConstants.ASPOSE_OCR);
 			component.set_selected(true);
 		}
 		if (_pageOne.asposeImagingButton.getSelection()) {
 			AsposeJavaComponent component = AsposeJavaComponents.list
-					.get(ECPluginConstants.ASPOSE_IMAGING);
+					.get(AsposeConstants.ASPOSE_IMAGING);
+			component.set_selected(true);
+		}
+		if (_pageOne.asposeDiagramButton.getSelection()) {
+			AsposeJavaComponent component = AsposeJavaComponents.list
+					.get(AsposeConstants.ASPOSE_DIAGRAM);
 			component.set_selected(true);
 		}
 	}
@@ -154,10 +148,10 @@ IExecutableExtension {
 		super.addPages();
 
 		_pageOne = new WizardNewProjectCreationPageCustom(
-				ECPluginConstants.FIRST_PAGE_NAME);
+				AsposeConstants.FIRST_PAGE_NAME);
 
-		_pageOne.setTitle(ECPluginConstants.FIRST_PAGE_TITLE);
-		_pageOne.setDescription(ECPluginConstants.FIRST_PAGE_DESCRIPTION);
+		_pageOne.setTitle(AsposeConstants.FIRST_PAGE_TITLE);
+		_pageOne.setDescription(AsposeConstants.FIRST_PAGE_DESCRIPTION);
 		URL imageurl = getClass().getResource("/images/long_banner.PNG");
 		ImageDescriptor image = ImageDescriptor.createFromURL(imageurl);
 		_pageOne.setImageDescriptor(image);

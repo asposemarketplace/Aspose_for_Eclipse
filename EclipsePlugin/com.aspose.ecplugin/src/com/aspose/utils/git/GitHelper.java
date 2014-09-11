@@ -1,15 +1,26 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.aspose.utils.git;
 
 import java.io.File;
-import org.eclipse.jgit.api.*;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.storage.file.FileRepository;
-import com.aspose.ecplugin.*;
+import org.eclipse.jgit.internal.storage.file.FileRepository;
 
+import com.aspose.ecplugin.AsposeComponentsManager;
+import com.aspose.ecplugin.AsposeConstants;
+import com.aspose.ecplugin.AsposeJavaComponent;
+
+/**
+ *
+ * @author Administrator
+ */
 public class GitHelper {
-
-
-	private static void updateRepository(String localPath, String remotePath) throws Exception
+    private static void updateRepository(String localPath, String remotePath,IProgressMonitor monitor) throws Exception
 	{        
 		Repository localRepo;
 		try
@@ -17,26 +28,31 @@ public class GitHelper {
 			localRepo = new FileRepository(localPath + "/.git");
 
 			Git git = new Git(localRepo);
-			{System.out.println("Cloning Repository [" + remotePath + "]....");}
+			{AsposeConstants.println("Cloning Repository [" + remotePath + "]....");}
 
 			// First try to clone the repository
 			try
 			{
 				Git.cloneRepository().setURI(remotePath).setDirectory(new File(localPath)).call();
+				monitor.worked(1);
 			}
 			catch(Exception ex)
 			{
+				monitor.worked(1);
 				// If clone fails, try to pull the changes
 				try
 				{
+				   
 					git.pull().call();
 				}
 				catch(Exception exPull)
 				{
 					// Pull also failed. Throw this exception to caller
-					{System.out.println("Pull also failed.");}
+					{AsposeConstants.println("Pull also failed.");}
 					throw exPull; // throw it
 				}
+			} finally {
+				monitor.worked(1);
 			}
 		}
 		catch(Exception ex)
@@ -45,32 +61,35 @@ public class GitHelper {
 		}
 	}
 
+   public static void updateRepository(AsposeJavaComponent component,IProgressMonitor monitor)
+   {
+       checkAndCreateFolder(getLocalRepositoryPath(component));
+       monitor.worked(1);
+       try {
+           updateRepository(getLocalRepositoryPath(component), component.get_remoteExamplesRepository(),monitor);
+       } catch (Exception e) {
+    	   e.printStackTrace();
+       } finally {
+       
+       }
+   }
+
+
+
+
 	/**
 	 * 
 	 * @param folderPath
 	 */
-	private static void checkAndCreateFolder(String folderPath) 
+	public static void checkAndCreateFolder(String folderPath) 
 	{
 		File folder = new File(folderPath);
 		if (!folder.exists()) {
-			folder.mkdir();
+			folder.mkdirs();
 		}
 	}
 
-	/**
-	 * 
-	 * @param component
-	 */
-	public static void updateRepository(AsposeJavaComponent component)
-	{
-		checkAndCreateFolder(getLocalRepositoryPath(component));
-		try {
-			updateRepository(getLocalRepositoryPath(component), component.get_remoteExamplesRepository());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	
 	/**
 	 * 

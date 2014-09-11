@@ -15,7 +15,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
@@ -23,26 +22,22 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
-import com.aspose.ecplugin.ECPluginConstants;
+import com.aspose.ecplugin.AsposeConstants;
 
 public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreationPage {
 	public Button asposeWordsButton;
 	public Button asposeCellsButton;
 	public Button asposePdfButton;
 	public Button asposeSlidesButton;
-	public Button asposePdfKitButton;
 	public Button asposeBarcodeButton;
-	
-	// Commented as we currently not showing MetaFiles Component in Wizard Options
-	//public Button asposeMetafilesButton;
-	
+	public Button asposeTasksButton;
 	public Button asposeEmailButton;
 	public Button asposeOCRButton;
 	public Button asposeImagingButton;
+	public Button asposeDiagramButton;
 
 	public Button checkUncheckAll;
-	public ProgressBar	progressBar;
-
+	
 	/**
 	 * 
 	 * @param pageName
@@ -67,7 +62,7 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 
 		if(!isComponentSelected())
 		{
-			setErrorMessage(ECPluginConstants.IS_COMPONENT_SELECTED);
+			setErrorMessage(AsposeConstants.IS_COMPONENT_SELECTED);
 			return false;
 		}
 
@@ -90,22 +85,17 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 			return true;
 		if(asposeSlidesButton.getSelection())
 			return true;
-		if(asposePdfKitButton.getSelection())
+	    if(asposeBarcodeButton.getSelection())
 			return true;
-		if(asposeBarcodeButton.getSelection())
+	    if(asposeTasksButton.getSelection())
 			return true;
-		
-		// Commented as we currently not showing MetaFiles Component in Wizard Options
-		/*
-		if(asposeMetafilesButton.getSelection())
-			return true;
-		*/
-		
 		if(asposeEmailButton.getSelection())
 			return true;
 		if(asposeOCRButton.getSelection())
 			return true;
 		if(asposeImagingButton.getSelection())
+			return true;
+		if(asposeDiagramButton.getSelection())
 			return true;
 
 		return false;
@@ -131,20 +121,20 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 	 */
 	private void createECComponents(Composite parent){
 		Composite composite = (Composite) getControl ();
-		Composite dataArea = new Composite (composite, SWT.NONE);
-		dataArea.setLayout (new GridLayout (5, false));
-		dataArea.setLayoutData (new GridData (GridData.HORIZONTAL_ALIGN_FILL));
+		Composite dataArea = new Composite (composite, SWT.FILL);
+		dataArea.setLayout (new GridLayout (2,false));
+		dataArea.setLayoutData (new GridData (GridData.FILL_BOTH));
 
 		Group parentStyleGroup;
-		parentStyleGroup = new Group(dataArea, SWT.NONE);
+		parentStyleGroup = new Group(dataArea, SWT.FILL);
 		parentStyleGroup.setLayout(new GridLayout());
-		GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
+		GridData gridData = new GridData(GridData.FILL_BOTH);
 		parentStyleGroup.setLayoutData(gridData);
 
 		Group parentStyleGroupSel;
 		parentStyleGroupSel = new Group(dataArea, SWT.BOTTOM);
 		parentStyleGroupSel.setLayout(new GridLayout());
-		GridData gridDataSel = new GridData(GridData.HORIZONTAL_ALIGN_FILL,GridData.HORIZONTAL_ALIGN_FILL,true,true);
+		GridData gridDataSel = new GridData(GridData.FILL_BOTH);
 		parentStyleGroupSel.setLayoutData(gridDataSel);
 		parentStyleGroupSel.setText("Common Uses:");
 
@@ -152,7 +142,7 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 
 		checkUncheckAll = new Button(parentStyleGroup, SWT.CHECK|SWT.BOLD);
 		checkUncheckAll.setText("Select All");
-		checkUncheckAll.setToolTipText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+		checkUncheckAll.setToolTipText(AsposeConstants.ASPOSE_ALL_COMPONENTS_TEXT);
 		checkUncheckAll.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -166,100 +156,82 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 
 
 		asposeCellsButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeCellsButton.setText(ECPluginConstants.ASPOSE_CELLS);
-		asposeCellsButton.setToolTipText(ECPluginConstants.ASPOSE_CELLS_FEATURE_TEXT);
+		asposeCellsButton.setText(AsposeConstants.ASPOSE_CELLS);
+		asposeCellsButton.setToolTipText(AsposeConstants.ASPOSE_CELLS_FEATURE_TEXT);
 		asposeCellsButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 
 		asposeWordsButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeWordsButton.setText(ECPluginConstants.ASPOSE_WORDS);
-		asposeWordsButton.setToolTipText(ECPluginConstants.ASPOSE_WORDS_FEATURE_TEXT);
+		asposeWordsButton.setText(AsposeConstants.ASPOSE_WORDS);
+		asposeWordsButton.setToolTipText(AsposeConstants.ASPOSE_WORDS_FEATURE_TEXT);
 		asposeWordsButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 
 		asposePdfButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposePdfButton.setText(ECPluginConstants.ASPOSE_PDF);
-		asposePdfButton.setToolTipText(ECPluginConstants.ASPOSE_PDF_FEATURE_TEXT);
+		asposePdfButton.setText(AsposeConstants.ASPOSE_PDF);
+		asposePdfButton.setToolTipText(AsposeConstants.ASPOSE_PDF_FEATURE_TEXT);
 		asposePdfButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 		asposeSlidesButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeSlidesButton.setText(ECPluginConstants.ASPOSE_SLIDES);
-		asposeSlidesButton.setToolTipText(ECPluginConstants.ASPOSE_SLIDES_FEATURE_TEXT);
+		asposeSlidesButton.setText(AsposeConstants.ASPOSE_SLIDES);
+		asposeSlidesButton.setToolTipText(AsposeConstants.ASPOSE_SLIDES_FEATURE_TEXT);
 		asposeSlidesButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 		
 		asposeBarcodeButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeBarcodeButton.setText(ECPluginConstants.ASPOSE_BARCODE);
-		asposeBarcodeButton.setToolTipText(ECPluginConstants.ASPOSE_BARCODE_FEATURE_TEXT);
+		asposeBarcodeButton.setText(AsposeConstants.ASPOSE_BARCODE);
+		asposeBarcodeButton.setToolTipText(AsposeConstants.ASPOSE_BARCODE_FEATURE_TEXT);
 		asposeBarcodeButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
- 
-		// Commented as we currently not showing MetaFiles Component in Wizard Options
-/*		asposeMetafilesButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeMetafilesButton.setText(ECPluginConstants.ASPOSE_METAFILES);
-		asposeMetafilesButton.setToolTipText(ECPluginConstants.ASPOSE_METAFILES_FEATURE_TEXT);
-		asposeMetafilesButton.addSelectionListener(new SelectionAdapter() {
+		
+		asposeTasksButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeTasksButton.setText(AsposeConstants.ASPOSE_TASKS);
+		asposeTasksButton.setToolTipText(AsposeConstants.ASPOSE_TASKS_FEATURE_TEXT);
+		asposeTasksButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
-*/
+		
 		asposeEmailButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeEmailButton.setText(ECPluginConstants.ASPOSE_EMAIL);
-		asposeEmailButton.setToolTipText(ECPluginConstants.ASPOSE_EMAIL_FEATURE_TEXT);
+		asposeEmailButton.setText(AsposeConstants.ASPOSE_EMAIL);
+		asposeEmailButton.setToolTipText(AsposeConstants.ASPOSE_EMAIL_FEATURE_TEXT);
 		asposeEmailButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 		asposeOCRButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeOCRButton.setText(ECPluginConstants.ASPOSE_OCR);
-		asposeOCRButton.setToolTipText(ECPluginConstants.ASPOSE_OCR_FEATURE_TEXT);
+		asposeOCRButton.setText(AsposeConstants.ASPOSE_OCR);
+		asposeOCRButton.setToolTipText(AsposeConstants.ASPOSE_OCR_FEATURE_TEXT);
 		asposeOCRButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 		asposeImagingButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposeImagingButton.setText(ECPluginConstants.ASPOSE_IMAGING);
-		asposeImagingButton.setToolTipText(ECPluginConstants.ASPOSE_IMAGING_FEATURE_TEXT);
+		asposeImagingButton.setText(AsposeConstants.ASPOSE_IMAGING);
+		asposeImagingButton.setToolTipText(AsposeConstants.ASPOSE_IMAGING_FEATURE_TEXT);
 		asposeImagingButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
-
-		asposePdfKitButton = new Button(parentStyleGroup, SWT.CHECK);
-		asposePdfKitButton.setText(ECPluginConstants.ASPOSE_PDF_KIT);
-		asposePdfKitButton.setToolTipText(ECPluginConstants.ASPOSE_PDF_KIT_FEATURE_TEXT);
-		asposePdfKitButton.setVisible(false);
-		asposePdfKitButton.addSelectionListener(new SelectionAdapter() {
+		asposeDiagramButton = new Button(parentStyleGroup, SWT.CHECK);
+		asposeDiagramButton.setText(AsposeConstants.ASPOSE_DIAGRAM);
+		asposeDiagramButton.setToolTipText(AsposeConstants.ASPOSE_DIAGRAM_FEATURE_TEXT);
+		asposeDiagramButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {setPageComplete(validatePage());}});
 
 		Label info = new Label(parentStyleGroupSel,SWT.FILL);
-		info.setText(ECPluginConstants.ASPOSE_ALL_COMPONENTS_TEXT);
+		info.setText(AsposeConstants.ASPOSE_ALL_COMPONENTS_TEXT);
 
-		Link javaHomeLink = new Link(parentStyleGroupSel,SWT.FILL);
-		javaHomeLink.setText(ECPluginConstants.ASPOSE_JAVA_COMP_LINK_TEXT);
-		javaHomeLink.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				try
-				{ 
-					@SuppressWarnings("unused")
-					Process p=Runtime.getRuntime().exec(ECPluginConstants.ASPOSE_JAVA_COMP_LINK_OPN_CMD); 
-				} 
-				catch(IOException e1) 
-				{System.out.println(e1);} 
 
-			}
-		});
 
-		progressBar = new ProgressBar(parentStyleGroup, SWT.HORIZONTAL|SWT.SMOOTH);
-		progressBar.setVisible(false);
 
 	}
 	/**
@@ -271,15 +243,12 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 		asposeCellsButton.setSelection(value);
 		asposePdfButton.setSelection(value);
 		asposeSlidesButton.setSelection(value);
-		asposePdfKitButton.setSelection(value);
 		asposeBarcodeButton.setSelection(value);
-		
-		// Commented as we currently not showing MetaFiles Component in Wizard Options
-		//asposeMetafilesButton.setSelection(value);
-		
+		asposeTasksButton.setSelection(value);
 		asposeEmailButton.setSelection(value);
 		asposeOCRButton.setSelection(value);
 		asposeImagingButton.setSelection(value);
+		asposeDiagramButton.setSelection(value);
 
 	}
 }

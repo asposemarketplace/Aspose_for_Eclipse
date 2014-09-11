@@ -59,10 +59,10 @@ public class CustomProjectSupport {
 		IProject project = createBaseProject(projectName, location);
 		//project.
 		try {
-			addNature(project,ECPluginConstants.NATURE_ID);
-			addNature(project,ECPluginConstants.NATURE_ID_JDT);
+			addNature(project,AsposeConstants.NATURE_ID);
+			addNature(project,AsposeConstants.NATURE_ID_JDT);
 			addBuildCommand(project);
-			String[] paths = { ECPluginConstants.SRC_FOLDER, ECPluginConstants.BIN_FOLDER,ECPluginConstants.LIB_FOLDER };
+			String[] paths = { AsposeConstants.SRC_FOLDER, AsposeConstants.BIN_FOLDER,AsposeConstants.LIB_FOLDER };
 			addToProjectStructure(project, paths);
 			addClassPath(project);
 			project.refreshLocal(0, null);
@@ -88,7 +88,7 @@ public class CustomProjectSupport {
 			IJavaProject javaProject = JavaCore.create(project);
 
 
-			IFolder libFolder = project.getFolder(ECPluginConstants.LIB_FOLDER);			
+			IFolder libFolder = project.getFolder(AsposeConstants.LIB_FOLDER);			
 			IPackageFragmentRoot libRoot = javaProject.getPackageFragmentRoot(libFolder);
 			IPath libFolderPath = libRoot.getPath();
 			IPath workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
@@ -128,12 +128,12 @@ public class CustomProjectSupport {
 		IClasspathEntry[] newEntries = new IClasspathEntry[2];
 
 		// add a new entry using the path to the container
-		Path junitPath = new Path(ECPluginConstants.ORG_ECLIPSE_JDT_LAUNCHING_CONTAINER);
+		Path junitPath = new Path(AsposeConstants.ORG_ECLIPSE_JDT_LAUNCHING_CONTAINER);
 		IClasspathEntry junitEntry = JavaCore.newContainerEntry(junitPath);
 		newEntries[0] = JavaCore.newContainerEntry(junitEntry.getPath());
 
 		//add src folder
-		IFolder sourceFolder = project.getFolder(ECPluginConstants.SRC_FOLDER);
+		IFolder sourceFolder = project.getFolder(AsposeConstants.SRC_FOLDER);
 		IPackageFragmentRoot srcRoot = javaProject.getPackageFragmentRoot(sourceFolder);
 		IClasspathEntry srcPathEntry = JavaCore.newSourceEntry(srcRoot.getPath());
 		newEntries[1] = srcPathEntry;
@@ -142,7 +142,7 @@ public class CustomProjectSupport {
 
 			if(component.is_selected() && component.is_downloaded())
 			{
-				IFolder libFolder = project.getFolder(ECPluginConstants.LIB_FOLDER + File.separator + component.get_name());
+				IFolder libFolder = project.getFolder(AsposeConstants.LIB_FOLDER + File.separator + component.get_name());
 				if(!libFolder.exists())
 				{
 					try {
@@ -323,11 +323,11 @@ public class CustomProjectSupport {
 		IProjectDescription description = project.getDescription();
 		ICommand[] buildCommands = description.getBuildSpec();
 		ICommand command = description.newCommand();
-		command.setBuilderName(ECPluginConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER);
+		command.setBuilderName(AsposeConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER);
 
 		ICommand[] newBuildCommands;
-		if ( contains( buildCommands, ECPluginConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER ) ) {
-			newBuildCommands = swap( buildCommands, ECPluginConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER, command );
+		if ( contains( buildCommands, AsposeConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER ) ) {
+			newBuildCommands = swap( buildCommands, AsposeConstants.ORG_ECLIPSE_JDT_CORE_JAVA_BUILDER, command );
 		} else {
 			newBuildCommands = insert( buildCommands, command );
 		}			
