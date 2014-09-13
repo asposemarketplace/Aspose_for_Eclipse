@@ -44,7 +44,7 @@ public class WizardNewProjectCreationPageCustom extends WizardNewProjectCreation
 	 */
 	public WizardNewProjectCreationPageCustom(String pageName) {
 		super(pageName);
-	}
+		}
 
 	@Override
 	public void createControl(Composite parent) {

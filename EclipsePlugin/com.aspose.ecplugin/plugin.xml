@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="com.aspose.ecplugin.category.wizard"
-            name="Aspose Application">
+            name="Aspose">
       </category>
       <wizard
             category="com.aspose.ecplugin.category.wizard"
@@ -16,6 +16,7 @@
             id="com.aspose.ecplugin.wizard.new.project"
             name="Aspose Application"
             project="true">
+             <description>This wizard creates a new Eclipse Java project by downloading and referencing libraries of Aspose Java APIs</description>
       </wizard>
       <wizard
             category="com.aspose.ecplugin.category.wizard"
@@ -23,6 +24,8 @@
             icon="icons/aspose.png"
             id="com.aspose.ecplugin.wizard.file.NewFileWizard"
             name="Aspose Example">
+            <description>This wizard creates Aspose APIs code examples within Eclipse Java project that was created by using Aspose Project Wizard</description>
+     
       </wizard>
    </extension>
    <extension

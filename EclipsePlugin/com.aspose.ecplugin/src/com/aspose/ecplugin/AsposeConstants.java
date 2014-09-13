@@ -41,7 +41,7 @@ public class AsposeConstants {
 	public static final String FIRST_PAGE_NAME = "Aspose Project Wizard";
 	public static final String FIRST_PAGE_TITLE = "Aspose New Project";
 	public static final String FIRST_PAGE_DESCRIPTION = "Create Aspose New Project";
-	public static final String WIZARD_NAME = "Aspose new project";
+	public static final String WIZARD_NAME = "Aspose Project Wizard";
 	public static final String IS_COMPONENT_SELECTED ="Please select at least one Aspose library to create a new project";
 	public static final String INTERNET_CONNECTION_REQUIRED_MESSAGE_TITLE ="Internet connectivity";
 	public static final String INTERNET_CONNECTION_REQUIRED_MESSAGE ="Internet connectivity is required to download Aspose libraries";
