@@ -8,7 +8,7 @@ Aspose for Eclipse project enables users to create a new Eclipse project through
 - [How to use Aspose Eclipse Plugin](http://www.aspose.com/blogs/aspose-business/news-release/archive/2013/03/02/announcing-aspose-eclipse-plugin-released.html)
 - [Aspose Java Components](http://www.aspose.com/java/total-component.aspx)
 
-![Aspose Project Wizard - Eclipse Plugin](http://marketplace.eclipse.org/sites/default/files/02-Aspose%20New%20Project.png)
+![Aspose Project Wizard - Eclipse Plugin](http://i.imgur.com/Ibw5qcQ.png)
 
 This plugin helps you to explore Aspose Java components inside your favorite IDE.
 - Aspose New Project creates a new project by downloading and referencing libraries of Aspose Java components.
