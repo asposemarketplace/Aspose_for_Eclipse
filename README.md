@@ -3,10 +3,11 @@ Aspose for Eclipse
 
 Aspose for Eclipse project enables users to create a new Eclipse project through an Aspose Project Wizard. Through this wizard, the developers can select and download the Aspose libraries and samples of their choice.
 
-###Important Links
+###Recommended Links
 - [Aspose Project Wizard at Eclipse Marketplace](http://marketplace.eclipse.org/content/aspose-project-wizard)
 - [How to use Aspose Eclipse Plugin](http://www.aspose.com/blogs/aspose-business/news-release/archive/2013/03/02/announcing-aspose-eclipse-plugin-released.html)
 - [Aspose Java Components](http://www.aspose.com/java/total-component.aspx)
+- [Video tutorial showing Aspose Project Wizard v1.1 for Eclipse IDE](https://www.youtube.com/watch?v=FKLqdKU-Z_0)
 
 ![Aspose Project Wizard - Eclipse Plugin](http://i.imgur.com/Ibw5qcQ.png)
 
