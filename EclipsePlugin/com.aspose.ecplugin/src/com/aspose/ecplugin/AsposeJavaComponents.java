@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2001-2013 Aspose Pty Ltd. All Rights Reserved.
+ * Copyright (c) 2001-2015 Aspose Pty Ltd. All Rights Reserved.
  * Author: Mohsan.Raza
  */
 
@@ -17,7 +17,7 @@ public class AsposeJavaComponents {
            asposeCells.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.cells.aspx");
            asposeCells.set_downloadFileName("aspose-cells.zip");
            asposeCells.set_name(AsposeConstants.ASPOSE_CELLS);
-           asposeCells.set_remoteExamplesRepository("git://github.com/asposecells/Aspose_Cells_Java.git");
+           asposeCells.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Cells_Java.git");
            list.put(AsposeConstants.ASPOSE_CELLS, asposeCells);
 
            //ASPOSE_WORDS
@@ -25,7 +25,7 @@ public class AsposeJavaComponents {
            asposeWords.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.words.aspx");
            asposeWords.set_downloadFileName("aspose-words.zip");
            asposeWords.set_name(AsposeConstants.ASPOSE_WORDS);
-           asposeWords.set_remoteExamplesRepository("git://github.com/asposewords/Aspose_Words_Java.git");
+           asposeWords.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Words_Java.git");
            list.put(AsposeConstants.ASPOSE_WORDS, asposeWords);
 
            //ASPOSE_PDF
@@ -33,7 +33,7 @@ public class AsposeJavaComponents {
            asposePDF.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.pdf.aspx");
            asposePDF.get_downloadFileName();
            asposePDF.set_name(AsposeConstants.ASPOSE_PDF);
-           asposePDF.set_remoteExamplesRepository("git://github.com/asposepdf/Aspose_Pdf_Java.git");
+           asposePDF.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Pdf_Java.git");
            list.put(AsposeConstants.ASPOSE_PDF, asposePDF);
 
            //ASPOSE_Slides
@@ -41,7 +41,7 @@ public class AsposeJavaComponents {
            asposeSlides.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.slides.aspx");
            asposeSlides.get_downloadFileName();
            asposeSlides.set_name(AsposeConstants.ASPOSE_SLIDES);
-           asposeSlides.set_remoteExamplesRepository("git://github.com/asposeslides/Aspose_Slides_Java.git");
+           asposeSlides.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Slides_Java.git");
            list.put(AsposeConstants.ASPOSE_SLIDES, asposeSlides);
 
            //ASPOSE_BarCode
@@ -49,7 +49,7 @@ public class AsposeJavaComponents {
            asposeBarcode.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.barcode.aspx");
            asposeBarcode.get_downloadFileName();
            asposeBarcode.set_name(AsposeConstants.ASPOSE_BARCODE);
-           asposeBarcode.set_remoteExamplesRepository("git://github.com/asposebarcode/Aspose_BarCode_Java.git");
+           asposeBarcode.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_BarCode_Java.git");
            list.put(AsposeConstants.ASPOSE_BARCODE, asposeBarcode);
 
 
@@ -58,7 +58,7 @@ public class AsposeJavaComponents {
           asposeTasks.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.tasks.aspx");
           asposeTasks.get_downloadFileName();
           asposeTasks.set_name(AsposeConstants.ASPOSE_TASKS);
-          asposeTasks.set_remoteExamplesRepository("git://github.com/asposetasks/Aspose_Tasks_Java.git");
+          asposeTasks.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Tasks_Java.git");
           list.put(AsposeConstants.ASPOSE_TASKS, asposeTasks);
 
            //ASPOSE_MetaFiles
@@ -73,7 +73,7 @@ public class AsposeJavaComponents {
            asposeEmail.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.email.aspx");
            asposeEmail.get_downloadFileName();
            asposeEmail.set_name(AsposeConstants.ASPOSE_EMAIL);
-           asposeEmail.set_remoteExamplesRepository("git://github.com/asposeemail/Aspose_Email_Java.git");
+           asposeEmail.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Email_Java.git");
            list.put(AsposeConstants.ASPOSE_EMAIL, asposeEmail);
 
            //ASPOSE_OCR
@@ -88,7 +88,7 @@ public class AsposeJavaComponents {
            asposeImaging.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.imaging.aspx");
            asposeImaging.set_downloadFileName("");
            asposeImaging.set_name(AsposeConstants.ASPOSE_IMAGING);
-           asposeImaging.set_remoteExamplesRepository("git://github.com/asposeimaging/Aspose_Imaging_Java.git");
+           asposeImaging.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Imaging_Java.git");
            list.put(AsposeConstants.ASPOSE_IMAGING, asposeImaging);
 
           //ASPOSE_Diagram
@@ -96,7 +96,7 @@ public class AsposeJavaComponents {
           asposeDiagram.set_downloadUrl("http://community.aspose.com/community/secureservices/asposedownloads/java/aspose.diagram.aspx");
           asposeDiagram.set_downloadFileName("");
           asposeDiagram.set_name(AsposeConstants.ASPOSE_DIAGRAM);
-          asposeDiagram.set_remoteExamplesRepository("git://github.com/asposediagram/Aspose_Diagram_Java.git");
+          asposeDiagram.set_remoteExamplesRepository("git://github.com/AdeelIlyas2014/Aspose_Diagram_Java.git");
           list.put(AsposeConstants.ASPOSE_DIAGRAM, asposeDiagram);
 
 
