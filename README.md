@@ -1,3 +1,12 @@
+### :sparkles: Visit New Repository for Latest Updates :sparkles:
+
+* For further releases and updates, please visit and follow our new [Aspose Java for Eclipse](https://github.com/asposetotal/Aspose_Total_Java) github repository.
+* For documentation, please visit [Aspose Docs](http://www.aspose.com/docs/display/totaljava/3.+Aspose.Total+Java+for+Eclipse).
+* For downloads, never forget to visit [Eclipse Marketplace](http://marketplace.eclipse.org/content/aspose-project-wizard#.U6kXc5SSyAQ).
+
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=686636" class="drag" title="Drag to your running Eclipse workspace to install Aspose Project Wizard"><img src="http://marketplace.eclipse.org/sites/all/themes/solstice/_themes/solstice_marketplace/public/images/btn-install.png" alt="Drag to your running Eclipse workspace to install Aspose Project Wizard" /></a>
+---
+
 Aspose for Eclipse
 ==================
 
